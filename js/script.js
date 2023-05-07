@@ -85,4 +85,5 @@ again.addEventListener('click', function () {
   labelHighScore.style.color = '#ccc';
   labelScore.style.color = '#ccc';
   number.style.backgroundColor = '#ccc';
+  guessNum.style.color = '#ccc';
 });
