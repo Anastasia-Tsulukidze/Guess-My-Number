@@ -14,12 +14,23 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highScore = 0;
 const displayMessage = function (message) {
-  document.querySelector('.message').textContent = message;
+  messageText.textContent = message;
 };
+const number = document.querySelector('.number');
+const guessNum = document.querySelector('.guess');
+const again = document.querySelector('.again');
+const labelHighScore = document.querySelector('.label-highscore');
+const check = document.querySelector('.check');
+const body = document.querySelector('body');
+const heading = document.querySelector('h1');
+const between = document.querySelector('.between');
+const messageText = document.querySelector('.message');
+const labelScore = document.querySelector('.label-score');
+const scoreText = document.querySelector('.score');
+const highScoreText = document.querySelector('.highscore');
 //this will select check button on click and sees if number is written, and converts it to number
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess);
 
   //this will check if the number is written
   if (!guess) {
@@ -27,51 +38,51 @@ document.querySelector('.check').addEventListener('click', function () {
     //if player wins the game
   } else if (guess === secretNumber) {
     displayMessage('Correct Number!');
-    document.querySelector('body').style.backgroundColor = '#ffdac7';
-    document.querySelector('.number').style.width = '30rem';
-    document.querySelector('.check').style.backgroundColor = '#eb6424';
-    document.querySelector('.again').style.backgroundColor = '#eb6424';
-    document.querySelector('.number').style.backgroundColor = '#fa9500';
-    document.querySelector('h1').style.color = '#222';
-    document.querySelector('.between').style.color = '#222';
-    document.querySelector('.message').style.color = '#222';
-    document.querySelector('.label-highscore').style.color = '#222';
-    document.querySelector('.label-score').style.color = '#222';
-    document.querySelector('.guess').style.borderColor = '#222';
-    document.querySelector('.guess').style.color = '#222';
-    document.querySelector('.number').textContent = secretNumber;
+    body.style.backgroundColor = '#ffdac7';
+    number.style.width = '25rem';
+    check.style.backgroundColor = '#eb6424';
+    again.style.backgroundColor = '#eb6424';
+    number.style.backgroundColor = '#fa9500';
+    heading.style.color = '#222';
+    between.style.color = '#222';
+    messageText.style.color = '#222';
+    labelHighScore.style.color = '#222';
+    labelScore.style.color = '#222';
+    guessNum.style.borderColor = '#222';
+    guessNum.style.color = '#222';
+    number.textContent = secretNumber;
     if (score > highScore) {
       highScore = score;
-      document.querySelector('.highscore').textContent = highScore;
+      highScoreText.textContent = highScore;
     }
     //when guess is wrong
   } else if (guess !== secretNumber) {
     if (score > 1) {
       displayMessage(guess > secretNumber ? 'Too high!' : 'Too low!');
       score--;
-      document.querySelector('.score').textContent = score;
+      scoreText.textContent = score;
     } else {
       displayMessage('You lost the game!');
-      document.querySelector('.score').textContent = 0;
+      scoreText.textContent = 0;
     }
   }
 });
-document.querySelector('.again').addEventListener('click', function () {
+again.addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
   score = 20;
   displayMessage('Start guessing...');
-  document.querySelector('.score').textContent = score;
-  document.querySelector('.number').textContent = '?';
-  document.querySelector('.guess').value = '';
-  document.querySelector('body').style.backgroundColor = '#222';
-  document.querySelector('.number').style.width = '15rem';
-  document.querySelector('.again').style.backgroundColor = '#541c94';
-  document.querySelector('.check').style.backgroundColor = '#541c94';
-  document.querySelector('h1').style.color = '#ccc';
-  document.querySelector('.between').style.color = '#ccc';
-  document.querySelector('.guess').style.borderColor = '#ccc';
-  document.querySelector('.message').style.color = '#ccc';
-  document.querySelector('.label-highscore').style.color = '#ccc';
-  document.querySelector('.label-score').style.color = '#ccc';
-  document.querySelector('.number').style.backgroundColor = '#ccc';
+  scoreText.textContent = score;
+  number.textContent = '?';
+  guessNum.value = '';
+  body.style.backgroundColor = '#222';
+  number.style.width = '15rem';
+  again.style.backgroundColor = '#541c94';
+  check.style.backgroundColor = '#541c94';
+  heading.style.color = '#ccc';
+  between.style.color = '#ccc';
+  guessNum.style.borderColor = '#ccc';
+  messageText.style.color = '#ccc';
+  labelHighScore.style.color = '#ccc';
+  labelScore.style.color = '#ccc';
+  number.style.backgroundColor = '#ccc';
 });
